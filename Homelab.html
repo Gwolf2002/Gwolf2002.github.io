@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Homelab Updates</title>
+    <title>Project 1 Updates</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -20,24 +20,6 @@
             width: 80%;
             margin: auto;
         }
-        form {
-            background: white;
-            padding: 15px;
-            margin-top: 20px;
-            border-radius: 8px;
-        }
-        input, textarea {
-            width: 100%;
-            padding: 10px;
-            margin: 10px 0;
-        }
-        button {
-            padding: 10px 15px;
-            background: #333;
-            color: white;
-            border: none;
-            cursor: pointer;
-        }
         .post {
             background: white;
             padding: 15px;
@@ -53,65 +35,29 @@
 <body>
 
 <header>
-    <h1>Homelab Updates</h1>
+    <h1>Project 1 Updates</h1>
     <a href="index.html" style="color:white;">← Back to Home</a>
 </header>
 
 <div class="container">
 
-    <!-- Form to add updates -->
-    <form id="updateForm">
-        <h2>Add Update</h2>
-        <input type="text" id="title" placeholder="Title" required>
-        <input type="date" id="date" required>
-        <textarea id="content" placeholder="Write your update..." rows="5" required></textarea>
-        <button type="submit">Post Update</button>
-    </form>
+    <!-- 🔽 ADD NEW POSTS BELOW THIS LINE 🔽 -->
 
-    <!-- Updates will appear here -->
-    <div id="posts"></div>
+    <div class="post">
+        <h3>First Update</h3>
+        <p class="date">May 16, 2026</p>
+        <p>This is your first project update. Edit or replace this text.</p>
+    </div>
+
+    <div class="post">
+        <h3>Another Update</h3>
+        <p class="date">May 15, 2026</p>
+        <p>Write another update here.</p>
+    </div>
+
+    <!-- 🔼 ADD NEW POSTS ABOVE THIS LINE 🔼 -->
 
 </div>
-
-<script>
-    const form = document.getElementById("updateForm");
-    const postsDiv = document.getElementById("posts");
-
-    // Load saved posts
-    let posts = JSON.parse(localStorage.getItem("project1Posts")) || [];
-
-    function displayPosts() {
-        postsDiv.innerHTML = "";
-        posts.forEach(post => {
-            const postEl = document.createElement("div");
-            postEl.className = "post";
-            postEl.innerHTML = `
-                <h3>${post.title}</h3>
-                <p class="date">${post.date}</p>
-                <p>${post.content}</p>
-            `;
-            postsDiv.prepend(postEl);
-        });
-    }
-
-    form.addEventListener("submit", function(e) {
-        e.preventDefault();
-
-        const newPost = {
-            title: document.getElementById("title").value,
-            date: document.getElementById("date").value,
-            content: document.getElementById("content").value
-        };
-
-        posts.push(newPost);
-        localStorage.setItem("project1Posts", JSON.stringify(posts));
-
-        form.reset();
-        displayPosts();
-    });
-
-    displayPosts();
-</script>
 
 </body>
 </html>
